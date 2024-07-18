@@ -10,7 +10,6 @@ resource "aws_security_group" "elb_sg" {
     cidr_blocks      = ["0.0.0.0/0"]
     ipv6_cidr_blocks = ["::/0"]
   }
-
   ingress {
     description      = "Allow https request from anywhere"
     protocol         = "tcp"
@@ -42,11 +41,10 @@ resource "aws_security_group" "omer_ec2_sg" {
   }
 
   ingress {
-    description     = "Allow https request from Load Balancer"
-    protocol        = "tcp"
-    from_port       = 443
-    to_port         = 443
-    security_groups = [aws_security_group.elb_sg.id]
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   egress {
