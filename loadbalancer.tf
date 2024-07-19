@@ -1,7 +1,7 @@
 resource "aws_elb" "omer-elb" {
   name               = "omer-elb"
   security_groups    = [aws_security_group.elb_sg.id]
-  subnets            = [aws_subnet.public_subnet.id]
+  subnets            = [aws_subnet.private_subnet.id]
   depends_on         = [aws_internet_gateway.omer-gateway]
   listener {
     instance_port     = 80
