@@ -10,7 +10,7 @@ resource "aws_elb" "omer-elb" {
     lb_protocol       = "HTTP"
   }
   health_check {
-    target              = "HTTP:80/"
+    target              = "HTTP:80/health" # This is the health check endpoint in my flask app
     interval            = 15
     timeout             = 5
     healthy_threshold   = 2

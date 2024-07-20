@@ -1,10 +1,6 @@
 #!/bin/bash
+# Update and install required packages
 sudo yum update -y
-sudo yum install -y httpd
-sudo systemctl start httpd
-sudo systemctl enable httpd
-sudo yum install stress
-echo "<h1>Hello World from $(hostname -f)</h1>" | sudo tee /var/www/html/index.html
 
 # Update and install required packages
 sudo yum install -y wget
@@ -20,3 +16,24 @@ tar xvf node_exporter-1.5.0.linux-amd64.tar.gz
 
 # Run Node Exporter in the background using nohup
 nohup ./node_exporter-1.5.0.linux-amd64/node_exporter >> /var/log/nodeexporter.log 2>&1 &
+
+#installing  stress
+sudo yum install -y stress
+
+#installing flask app
+yum install -y git python3-pip
+pip3 install flask
+
+# Clone the Flask project from your repository
+sudo git clone https://github.com/amsterdam1234/terraformLandingPage.git /home/ec2-user/terraformLandingPage
+
+# Navigate to the project directory
+cd /home/ec2-user/terraformLandingPage
+
+# Install the required Python packages
+sudo pip3 install -r requirements.txt
+
+# Start the Flask application
+export FLASK_APP=app.py
+#make sure to change the host to the private ip of the instance and port to 80
+sudo flask run --host=0.0.0.0 --port=80

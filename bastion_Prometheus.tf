@@ -1,4 +1,4 @@
-resource "aws_instance" "bastion" {
+resource "aws_instance" "bastion_promethues" {
   ami                    = "ami-00c39f71452c08778"
   instance_type          = "t2.micro"
   key_name               = aws_key_pair.omer_key.key_name # Key pair for the EC2 instances
