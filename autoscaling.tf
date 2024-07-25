@@ -17,3 +17,14 @@ resource "aws_autoscaling_group" "omer-asg" {
     version = "$Latest"
   }
 }
+
+# Auto scaling policy adding cw alarm
+resource "aws_autoscaling_policy" "scale_up" {
+  name                   = "scale_up"
+  scaling_adjustment     = 1
+  adjustment_type        = "ChangeInCapacity"
+  cooldown               = 300 #means that the policy will not be executed for 300 seconds after the previous execution
+  autoscaling_group_name = aws_autoscaling_group.omer-asg.name
+}
+
+
