@@ -18,6 +18,7 @@
 3. [Monitoring and Alerting Architecture](#monitoring-and-alerting-architecture)
    - [CloudWatch](#cloudwatch)
    - [Prometheus](#prometheus)
+4. [How to run the project](#how-to-run-the-project)
 
 ## Project Overview
 
@@ -147,3 +148,36 @@ The project is composed of several AWS resources:
         - **Port 9100**: Metrics collection endpoint.
     - **Prometheus Server**: Collects and visualizes metrics from Node Exporter.
         - **Port 9090**: Access Prometheus web UI and API.
+
+## How to run the project
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/amsterdam1234/terraform.git
+    cd terraform
+    ```
+2. Install terraform:
+    ```bash
+    brew tap hashicorp/tap  
+    brew install hashicorp/tap/terraform
+    ```
+3. Install the AWS CLI:
+    ```bash
+    brew install awscli
+    ```
+4. Initialize Terraform:
+    ```bash
+    terraform init
+    ```
+5. Change the aws profile in the `main.tf` file to your aws profile
+6. Run the following commands to create the infrastructure:
+    ```bash
+    terraform plan
+    terraform apply
+    ```
+7. Go to the domain name to see the web server (http://omer-amsterdam.com)
+8. If it is not working, it due to the DNS propagation, so you can use the ELB DNS name to access the web server to see the web server
+9. Go to the bastion host to see the prometheus metrics use the public IP of the bastion host and the port 9090 to see the prometheus metrics (http://bastion-host-public-ip:9090)
+10. To destroy the infrastructure run the following command:
+    ```bash
+    terraform destroy
+    ```
