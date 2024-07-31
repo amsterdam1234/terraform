@@ -176,7 +176,9 @@ The project is composed of several AWS resources:
     ```
 7. Go to the domain name to see the web server (http://omer-amsterdam.com)
 8. If it is not working, it due to the DNS propagation, so you can use the ELB DNS name to access the web server to see the web server
+#t odo adding picture
 9. Go to the bastion host to see the prometheus metrics use the public IP of the bastion host and the port 9090 to see the prometheus metrics (http://bastion-host-public-ip:9090)
+# todo adding picture
 10. To destroy the infrastructure run the following command:
     ```bash
     terraform destroy
