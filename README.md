@@ -28,7 +28,7 @@ This project utilizes Infrastructure as Code (IaC) principles through Terraform 
 
 The project is composed of several AWS resources:
 
-![terraform project.jpg](terraform%20project.jpg)
+![terraform project.jpg](photos%2Fterraform%20project.jpg)
 
 ### AWS Resources
 
